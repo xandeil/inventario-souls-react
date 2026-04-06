@@ -1,0 +1,71 @@
+.status-screen {
+    display: flex;
+    height: 100%;
+    padding: 20px;
+    gap: 40px;
+    background-color: #121212;
+}
+
+/* Coluna do Personagem */
+.status-visual {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 4px solid #1a1a1a;
+    padding-right: 40px;
+}
+
+.moldura-status-video {
+    width: 250px;
+    height: 350px;
+    border: 4px solid #1a1a1a;
+    outline: 2px solid #4d4d4d;
+    outline-offset: -10px;
+    background: #212121;
+    box-shadow: inset 0 0 50px #000;
+}
+
+.video-personagem {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+/* Coluna de Atributos */
+.status-detalhes {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.bar-group { margin-bottom: 12px; }
+.label-bar { font-size: 10px; display: flex; justify-content: space-between; margin-bottom: 5px; }
+
+.progress-bg { 
+    height: 12px; 
+    background: #000; 
+    border: 2px solid #333; 
+}
+.fill { height: 100%; transition: 0.3s; }
+.fill.hp { background: #8b0000; box-shadow: inset 0 0 5px #ff0000; }
+.fill.stm { background: #228b22; box-shadow: inset 0 0 5px #00ff00; }
+.fill.mana { background: #00008b; box-shadow: inset 0 0 5px #0000ff; }
+
+.atrib-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 12px;
+}
+
+.atrib-item span { color: #888; }
+.atrib-item strong { color: var(--accent); }
+
+.info-basica { text-align: center; margin-top: 15px; }
+.txt-nivel { color: #c1a35f; font-size: 14px; margin-top: 5px; }
