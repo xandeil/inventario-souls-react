@@ -1,16 +1,20 @@
 import { useState } from 'react';
 import Inventario from './components/Menu/Inventario/index';
-import Status from './components/Menu/Status/index'; // Importando o novo componente
+import Status from './components/Menu/Status/index';
 import './App.css';
 
 function App() {
   const [menuAberto, setMenuAberto] = useState(false);
   const [abaAtiva, setAbaAtiva] = useState('INVENTÁRIO');
 
-  // Centralizando os dados do personagem aqui para que todas as abas usem os mesmos valores
+  // O "SAVE" COMPLETO DO PERSONAGEM
   const [personagem, setPersonagem] = useState({
     nome: "Recruta Escamado",
-    nivel: 10,
+    nivel: 9,
+    memorias: 0,
+    memoriasParaProxNivel: 811,
+    
+    // Atributos que o jogador distribui
     atributos: {
       vida: 15,
       vigor: 12,
@@ -19,12 +23,31 @@ function App() {
       inteligencia: 10,
       fe: 8
     },
-    // Cálculos automáticos baseados nos atributos
-    hpMax: 150, // vida * 10
-    staminaMax: 60, // vigor * 5
-    manaMax: 54, // (int + fe) * 3
-    pesoMax: 74, // 50 + (vigor * 2)
-    danoSoco: 32 // 5 + (forca * 1.5)
+
+    // Status derivados (Base Stats)
+    hpMax: 522,
+    staminaMax: 94,
+    manaMax: 68,
+    pesoMax: 49.8,
+    poise: 30,
+    discovery: 107.0,
+
+    // Resistências do corpo
+    resistencias: {
+      immunity: 173,   // Veneno
+      robustness: 225, // Sangramento/Congelamento
+    },
+
+    // Defesas da armadura (%)
+    defesas: {
+      fisico: 79,
+      magia: 93,
+      fogo: 85,
+      raio: 75,
+      sagrado: 89
+    },
+
+    danoSoco: 32
   });
 
   return (
@@ -62,12 +85,12 @@ function App() {
             {/* Conteúdo das Abas */}
             <div className="conteudo-dinamico">
               
-              {/* Renderização do Inventário passando os atributos para checar requisitos */}
+              {/* Passando os atributos para o Inventário checar os requisitos das armas */}
               {abaAtiva === 'INVENTÁRIO' && (
                 <Inventario statusAtual={personagem.atributos} />
               )}
 
-              {/* Renderização da Aba de Status passando o objeto personagem completo */}
+              {/* Passando o objeto personagem completo para a Aba de Status */}
               {abaAtiva === 'STATUS' && (
                 <Status personagem={personagem} />
               )}
