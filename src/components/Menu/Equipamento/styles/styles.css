@@ -1,0 +1,101 @@
+.equip-container-compact {
+    display: grid;
+    /* Hero | Slots | Acessórios | Status */
+    grid-template-columns: 180px auto 70px 180px; 
+    gap: 15px;
+    padding: 20px;
+    background: #0a0a0a;
+    height: 100%;
+    align-items: start;
+}
+
+/* PERSONAGEM */
+.moldura-hero-compact {
+    width: 160px;
+    height: 240px;
+    border: 2px solid #1a1a1a;
+    background: #111;
+    overflow: hidden;
+}
+
+.video-compact {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* SLOTS EMPILHADOS */
+.main-slots-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.equip-group {
+    background: rgba(255,255,255,0.02);
+    padding: 8px;
+    border: 1px solid #151515;
+}
+
+.group-label {
+    font-size: 9px;
+    color: #444;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.slots-row {
+    display: flex;
+    gap: 5px;
+}
+
+/* ACESSÓRIOS VERTICAIS */
+.accessories-vertical {
+    display: flex;
+    flex-direction: row; /* Para o texto ficar de lado ou em cima */
+    gap: 5px;
+    position: relative;
+}
+
+.slots-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: rgba(255,255,255,0.02);
+    padding: 5px;
+    border: 1px solid #151515;
+}
+
+.vertical-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 9px;
+    color: #444;
+    text-transform: uppercase;
+}
+
+/* ESTILO DOS SLOTS */
+.slot-sq {
+    width: 42px;
+    height: 42px;
+    background: #121212;
+    border: 1px solid #222;
+    cursor: pointer;
+}
+
+.slot-sq:hover { border-color: #c1a35f; }
+.circle { border-radius: 50%; }
+.ring { border-radius: 4px; }
+
+/* STATUS */
+.stat-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #888;
+    padding: 4px 0;
+    border-bottom: 1px solid #151515;
+}
+
+.stat-line strong { color: #c1a35f; }
