@@ -9,6 +9,9 @@
   padding: 15px; /* Espaço para a borda interna aparecer */
   display: flex;
   flex-direction: column;
+  transform: scale(var(--game-scale));
+  transform-origin: center center; 
+  transition: transform 0.3s ease;
 }
 
 /* Cabeçalho das Abas */

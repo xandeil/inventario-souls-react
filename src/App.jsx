@@ -1,12 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Inventario from './components/Menu/Inventario/index';
 import Status from './components/Menu/Status/index';
-import Equipamento from './components/Menu/Equipamento/index'; // 1. IMPORTAR O NOVO COMPONENTE
+import Equipamento from './components/Menu/Equipamento/index';
+import Config from "./components/Menu/Configuracoes/index"; 
 import './App.css';
 
 function App() {
   const [menuAberto, setMenuAberto] = useState(false);
   const [abaAtiva, setAbaAtiva] = useState('EQUIPAMENTO'); // Mudei para começar no Equipamento para você testar
+
+  // Esta função lê a resolução salva e ajusta o tamanho da interface
+  useEffect(() => {
+    const aplicarRes = () => {
+      const res = localStorage.getItem('gameRes') || '1920x1080';
+      const largura = window.innerWidth;
+      let escala = 1;
+
+      if (res === '1920x1080') escala = largura / 1920;
+      else if (res === '1366x768') escala = largura / 1366;
+      else if (res === '1360x768') escala = largura / 1360;
+
+      document.documentElement.style.setProperty('--game-scale', escala);
+    };
+
+    aplicarRes();
+    window.addEventListener('resize', aplicarRes);
+    return () => window.removeEventListener('resize', aplicarRes);
+  }, []);
 
   const [personagem, setPersonagem] = useState({
     nome: "Recruta Escamado",
@@ -55,10 +75,10 @@ function App() {
       {menuAberto && (
         <div className="overlay-menu">
           <div className="caixa-principal-menu">
-            
+
             <div className="header-abas">
               {['EQUIPAMENTO', 'INVENTÁRIO', 'STATUS', 'CONFIG'].map(aba => (
-                <button 
+                <button
                   key={aba}
                   className={`tab-button ${abaAtiva === aba ? 'ativa' : ''}`}
                   onClick={() => setAbaAtiva(aba)}
@@ -70,7 +90,7 @@ function App() {
             </div>
 
             <div className="conteudo-dinamico">
-              
+
               {/* 2. ADICIONAR A RENDERIZAÇÃO DO EQUIPAMENTO */}
               {abaAtiva === 'EQUIPAMENTO' && (
                 <Equipamento personagem={personagem} />
@@ -85,10 +105,7 @@ function App() {
               )}
 
               {abaAtiva === 'CONFIG' && (
-                <div className="placeholder-text">
-                  <h2>{abaAtiva}</h2>
-                  <p>Aguardando implementação...</p>
-                </div>
+                <Config />
               )}
             </div>
 
