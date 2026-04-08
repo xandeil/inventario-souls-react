@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import './styles/styles.css';
+import videoPersonagem from '../../../assets/personagemAnimado.mp4';
 
 // Simulando um banco de dados de itens que você possui
 const MEUS_ITENS = [
   // --- LÂMINAS ---
-  { id: 1, cat: "lâminas", nome: "esp1", desc: "espada curta de ferro rústico.", icon: "⚔️" },
+{ 
+    id: 1, 
+    cat: "lâminas", 
+    nome: "Sanguinária de Escamas", 
+    desc: "O metal desta lâmina não foi temperado em água, mas no sangue fervente daqueles que reduziram o mundo de seu mestre a cinzas. Ela não busca justiça, apenas o fim de uma linhagem. O sangue de dragão é o único banquete que sacia sua sede.", 
+    icon: "🩸",
+    passiva: "Ao derrotar inimigos do tipo Dragão, o dano desta arma aumenta permanentemente." 
+  },
   { id: 2, cat: "lâminas", nome: "espc1", desc: "cimitarra leve para ataques rápidos.", icon: "🗡️" },
   { id: 3, cat: "lâminas", nome: "esp2", desc: "espada longa usada por cavaleiros de elite.", icon: "⚔️" },
   { id: 4, cat: "lâminas", nome: "esp_luxo", desc: "lâmina adornada com ouro e joias.", icon: "✨" },
@@ -60,19 +68,25 @@ export default function Inventario() {
 
   return (
     <div className="inventario-container">
-
       {/* COLUNA 1: EXIBIÇÃO DO PERSONAGEM */}
       <div className="coluna-personagem">
         <div className="moldura-personagem">
-          {/* Esta div vazia vai receber a animação de fundo pelo CSS */}
-          <div className="sprite-display"></div>
-
-          {/* Label fixa no pé do frame */}
+          <video 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            className="video-personagem"
+          >
+            {/* USANDO A VARIÁVEL IMPORTADA AQUI: */}
+            <source src={videoPersonagem} type="video/mp4" />
+            Seu navegador não suporta vídeos.
+          </video>
           <span className="label-pixel">personagem</span>
         </div>
       </div>
 
-      {/* COLUNA 2: GRADE DINÂMICA (Categorias e Itens) */}
+      {/* COLUNA 2: GRADE DINÂMICA */}
       <div className="coluna-grid">
         {CATEGORIAS.map(cat => (
           <div key={cat} className="categoria-section">
@@ -99,20 +113,16 @@ export default function Inventario() {
             <div className="detalhe-icon-large">
               <span>{selecionado.icon}</span>
             </div>
-
             <h2 className="item-name">{selecionado.nome}</h2>
-
             <h3 className="sub-title">sobre</h3>
             <p className="lore-text">{selecionado.desc}</p>
-
             <h3 className="sub-title">efeitos</h3>
-            <p className="lore-text">nenhum</p>
+            <p className="lore-text">{selecionado.passiva || "nenhum"}</p>
           </div>
         ) : (
           <div className="placeholder-vazio">selecione um item</div>
         )}
       </div>
-
     </div>
   );
 }

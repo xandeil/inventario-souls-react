@@ -1,0 +1,171 @@
+.equip-container-compact {
+    display: grid;
+    /* Hero (280px) | Slots (480px) | Acessórios (85px - aumentado) | Status (1fr) */
+    grid-template-columns: 280px 480px 85px 1fr; 
+    gap: 35px; /* Aumentado para descolar as colunas */
+    padding: 30px;
+    background: #0a0a0a;
+    height: 90%;
+    align-items: start;
+}
+
+/* PERSONAGEM */
+.moldura-hero-compact {
+    width: 240px; /* Aumentado para dar peso */
+    height: 400px; /* Aumentado para preencher a vertical */
+    border: 2px solid #1a1a1a;
+    background: #111;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.video-compact {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 'cover' preenche melhor o espaço vertical */
+}
+
+/* SLOTS EMPILHADOS */
+.main-slots-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Aumentado de ~320px para 480px para dar o efeito de 1.5x maior */
+    width: 480px; 
+}
+
+.equip-group {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 15px;
+    border: 1px solid #1a1a1a;
+    /* Remova o width: fit-content se ele estiver impedindo o alinhamento total */
+    display: flex;
+    flex-direction: column;
+    /* Mantém o título em cima e slots embaixo */
+    align-items: center;
+    /* Centraliza os filhos (título e linhas) horizontalmente */
+}
+
+.group-label {
+    align-self: flex-start;
+    font-size: 10px;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #1a1a1a;
+    width: 100%;
+}
+
+/* Linhas de slots */
+.slots-row {
+    display: flex;
+    /* Aumentar o gap ajuda a espalhar os itens na caixa que agora está maior */
+    gap: 20px; 
+    justify-content: center;
+    width: 100%;
+}
+
+/* ACESSÓRIOS VERTICAIS */
+.accessories-vertical {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 15px;
+    padding-left: 10px; /* Garante que não cole na borda da segunda coluna */
+}
+
+.slots-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Mais espaço entre os anéis */
+    background: rgba(255, 255, 255, 0.02);
+    padding: 10px;
+    border: 1px solid #1a1a1a;
+}
+
+.vertical-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 8px;
+    color: #444;
+    margin-right: 5px;
+}
+
+/* ESTILO DOS SLOTS */
+.slot-sq {
+    /* Aumentado de 45px para 65px (ajuste conforme seu gosto) */
+    width: 65px;
+    height: 65px;
+    
+    background: #121212;
+    border: 1px solid #222;
+    
+    /* Um brilho interno um pouco mais visível para slots grandes */
+    box-shadow: inset 0 0 8px #000;
+    
+    cursor: pointer;
+    transition: 0.2s;
+    
+    /* Centraliza o ícone que você colocar dentro no futuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slot-sq:hover {
+    border-color: #c1a35f;
+    background: #1a1a1a;
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.ring {
+    border-radius: 4px;
+}
+
+/* STATUS */
+.stat-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #888;
+    padding: 4px 0;
+    border-bottom: 1px solid #151515;
+}
+
+/* Status mais compacto */
+.side-stats-compact {
+    padding-top: 10px;
+    margin-left: 10px;
+}
+
+/* Ajuste no Ataque Container */
+.ataque-container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    align-items: stretch;
+}
+
+.ataque-container .equip-group:first-child { flex: 3; } /* Mãos */
+.ataque-container .equip-group:last-child { flex: 2; }  /* Munição */
+
+.main-slots-stack > .equip-group {
+    width: 100%;
+    box-sizing: border-box; /* Evita que o padding "estoure" a borda */
+}
+
+.main-slots-stack .equip-group {
+    width: 100%; 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px; /* Aumentei um pouco o padding para preencher melhor */
+}
+
+.stat-line strong {
+    color: #c1a35f;
+}
