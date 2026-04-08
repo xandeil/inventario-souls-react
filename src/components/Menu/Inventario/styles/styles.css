@@ -153,3 +153,17 @@
 .item-name { color: #fff; font-size: 20px; margin-bottom: 15px; }
 .lore-text { font-size: 11px; line-height: 1.6; color: #a0a0a0; margin-bottom: 20px; }
 .placeholder-vazio { color: #555; display: flex; align-items: center; justify-content: center; height: 100%; }
+
+.video-personagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz o vídeo preencher o quadrado da moldura */
+    image-rendering: pixelated; /* Mantém a nitidez se o vídeo for baixa resolução */
+    display: block;
+}
+
+.moldura-personagem {
+    overflow: hidden; /* Garante que o vídeo não "saia" das bordas da moldura */
+    position: relative;
+    /* ... seus outros estilos de moldura ... */
+}
